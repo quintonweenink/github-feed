@@ -33,7 +33,7 @@ app.put("/read-later/:username", (request, response) => {
         if (error) {
             return response.status(500).send(error)
         }
-        if (result.length < 1) {
+        if (!result) {
             var insertData = { username: username, items: items }
 
             collection.insertOne(insertData, (error, result) => {
