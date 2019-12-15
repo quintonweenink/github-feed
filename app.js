@@ -1,5 +1,6 @@
 const CONNECTION_URL = process.env.CONNECTION_URL
 const DATABASE_NAME = process.env.DATABASE_NAME
+const PORT = process.env.PORT || 8080;
 
 const Express = require("express")
 const cors = require("cors")
@@ -13,7 +14,7 @@ app.use(BodyParser.urlencoded({ extended: true }))
 app.use(cors())
 var database, collection
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
     MongoClient.connect(CONNECTION_URL, { useNewUrlParser: true }, (error, client) => {
         if (error) {
             throw error
